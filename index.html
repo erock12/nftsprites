@@ -1,0 +1,274 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NFT Sprites | AI-generated People On The Blockchain</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./app2.js"></script>
+</head>
+
+<body>
+
+<nav class="navbar navbar-default" style="background-color: #ffffff;">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        <img src="logo.jpg" height="50" width="208">
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="#" onclick="openNavFAQ()">FAQ</a></li>
+        <li><a href="/cdn-cgi/l/email-protection#b1d4c5d9d4c3c3ded2dad2dedcf1d6dcd0d8dd9fd2dedc">Contact</a></li>
+        <li><a href="https://etherscan.io/address/0xb3069fd0077952284d4853a89d2a169fe11740ff#code" target="_blank">View Smart Contract</a></li>
+        <li><a href="https://opensea.io/collection/nft-sprites-v3" target="_blank">OpenSea</a></li>
+        <li><a href="#" onclick="openNavAllNFTs()">View All NFT's</a></li>
+        <li><a href="#" onclick="openNavDisclaimer()">Disclaimer</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#" onclick="openNav()"><b>NFT Management Console</b></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div id="myNav" class="overlay">
+
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+    <div class="overlay-content">
+
+        <div id="userInfo"></div>
+
+        <br>
+
+        <h4>Sell NFT</h4>
+
+        <div class="form-group">
+            <textarea class="form-control" rows="1" id="sellrockid" placeholder="NFT ID" style="overflow:auto"></textarea>
+        </div>
+
+        <div class="form-group">
+            <textarea class="form-control" rows="1" id="sellrockprice" placeholder="Price of NFT in ETH - can enter decimals (eg. 0.0123)" style="overflow:auto"></textarea>
+        </div>
+
+        <div id="changesell"><a href="#!" onclick="sell()" button id="sellbutton" class="btn btn-primary btn-block">Sell NFT</a></div>
+
+        <br>
+
+        <h4>Transfer NFT</h4>
+
+        <div class="form-group">
+            <textarea class="form-control" rows="1" id="transferrockid" placeholder="NFT ID" style="overflow:auto"></textarea>
+        </div>
+
+        <div class="form-group">
+            <textarea class="form-control" rows="1" id="transferrockaccount" placeholder="Ethereum address to transfer NFT to" style="overflow:auto"></textarea>
+        </div>
+
+        <div id="changetransfer"><a href="#!" onclick="transfer()" button id="transferbutton" class="btn btn-primary btn-block">Transfer NFT</a></div>
+
+        <br>
+
+        <h4>Take NFT Off The Market</h4>
+
+        <div class="form-group">
+            <textarea class="form-control" rows="1" id="keeprockid" placeholder="NFT ID" style="overflow:auto"></textarea>
+        </div>
+
+        <div id="changegift"><a href="#!" onclick="remove()" button id="keeprockbutton" class="btn btn-primary btn-block">Take NFT Off The Market</a></div>
+
+        <br>
+
+        <a href="javascript:void(0)" onclick="closeNav()">[Return To Website]</a>
+
+    </div>
+</div>
+
+<div id="warning" class="overlay">
+
+    <a href="javascript:void(0)" class="closebtn" onclick="closeWarning()">&times;</a>
+
+    <div class="overlay-content-faqdisclaimer">
+
+        <p><b>NB:</b> For the time being, do not trade NFT Sprites on Opensea, as Opensea is using an old contract that should be avoided (we are waiting for Opensea to remove it and only use the current contract). Only use NFTSprites.com (this website) for buying and selling sprites. You can keep updated by following our Twitter <a href="https://twitter.com/nftsprites">@nftsprites</a>.</p>
+        
+        <a href="javascript:void(0)" onclick="closeWarning()">[Continue to Website]</a>
+
+    </div>
+</div>
+
+<div id="myNavFAQ" class="overlay">
+
+    <a href="javascript:void(0)" class="closebtn" onclick="closeFAQ()">&times;</a>
+
+    <div class="overlay-content-faqdisclaimer">
+
+        <h4>Frequently Asked Questions</h4>
+                
+        <h6>What is an NFT?</h6>
+        
+        <p>From <a href="https://en.wikipedia.org/wiki/Non-fungible_token" target="_blank">Wikipedia</a>: A non-fungible token (NFT) is a unit of data on a digital ledger called a blockchain, where each NFT can represent a unique digital item, and thus they are not interchangeable. NFTs can represent digital files such as art, audio, videos, items in video games and other forms of creative work. While the digital files themselves are infinitely reproducible, the NFTs representing them are tracked on their underlying blockchains and provide buyers with proof of ownership.</p>
+        
+        <h6>What does it mean to be "ERC-721 compliant"?</h6>
+        
+        <p>All NFT smart contracts on Ethereum should be ERC-721 compliant to be considered proper NFT's. <a href="http://erc721.org/" target="_blank">ERC-721</a> is a the standard for NFT's to allow unique tokens to be managed, owned and traded.</p>
+        
+        <h6>How does the NFT Sprites game work?</h6>
+        
+        <p>NFT Sprites are NFT's of AI-generated people that can be brought and sold on the Ethereum blockchain. At any given time, there is only 1 new NFT that can be brought, in addition to all the previously-brought NFT's that their owners may or may not be listing for sale. If you buy an NFT of an AI-generated person here (either a brand new one, or an existing NFT from someone else), you can either hold on to it forever, or list it for sale at any price you like. If you list it for sale it will be displayed on the website here for anyone to buy, if they wish.</p>
+        
+        <h6>What are the fees for playing the NFT Sprites game?</h6>
+        
+        <p>There are no fees for buying and selling NFT's other than the gas prices you'll have to pay for any Ethereum transaction. If you list an NFT for sale at 1 Ether and someone buys it for 1 Ether, you receive 1 Ether minus the gas costs you pay to the miners on the Ethereum network for your transactions (such as listing the NFT for sale).</p>
+        
+        <h6>Are the NFT people on this website <i>really</i> generated by AI?</h6>
+        
+        <p>Yes. None of the people you see on the website are real people (creepy, huh?). The technology for this is similar to something like the website thispersondoesnotexist.com, and the animation is done using the latest AI advances in 2020 and 2021.</p>
+        
+        <h6>How do I know only 100 NFT's will ever be available?</h6>
+        
+        <p>If you view our smart contract (verified on Etherscan <a href="https://etherscan.io/address/0xb3069fd0077952284d4853a89d2a169fe11740ff#code" target="_blank">here</a>), you can see that it only allows for a maximum of only 100 NFT's to be minted. Once 100 NFT's are minted any attempt to mint a new NFT will fail.
+        
+        <h6>How can I get in touch with the NFT Sprites team?</h6>
+        
+        <p>Please email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6a0f1e020f18180509010905072a0d070b03064409050744">[email&#160;protected]</a></p>
+
+        <p><center><a href="javascript:void(0)" onclick="closeFAQ()">[Return To Website]</a></center></p>
+
+    </div>
+</div>
+
+<div id="myNavDisclaimer" class="overlay">
+
+    <a href="javascript:void(0)" class="closebtn" onclick="closeDisclaimer()">&times;</a>
+
+    <div class="overlay-content-faqdisclaimer">
+
+        <h4>Disclaimer</h4>
+        
+        <p>NFT Sprites are intended as collectibles only, not securities or investments. If purchasing an NFT on this website, there is zero guarantee whatsoever that you will ever be able to sell it in future, and you may lose 100% of what you pay for an NFT. Moreover, there is zero intrinsic value to any of the NFT's here. Therefore, USE THE NFT SPRITES SMART CONTRACT AND THIS WEBSITE AT YOUR OWN RISK.</p>
+
+        <p><center><a href="javascript:void(0)" onclick="closeDisclaimer()">[Return To Website]</a></center></p>
+
+
+    </div>
+</div>
+
+<div id="myNavAllNFTs" class="overlay">
+
+    <a href="javascript:void(0)" class="closebtn" onclick="closeAllNFTs()">&times;</a>
+
+    <div class="overlay-content-faqdisclaimer">
+        
+        <div id="examplespriteinviewall" class="mainrocktableexample">
+        <center><video width="256" height="256" autoPlay loop muted><source src="1.mp4" type="video/mp4"><img src="/1.jpg" width="100%" height="100%" align="middle"></video></center><h5>NFT ID 1</h5>
+        </div>
+        <center><div id="togglesprite"></div></center>
+        
+        <p><center><a href="javascript:void(0)" onclick="closeAllNFTs()">[Return To Website]</a></center></p>
+
+    </div>
+</div>
+
+<div id="transactionprocessing" class="overlay">
+    <div class="overlay-content-faqdisclaimer">
+    <center>
+    <h6>Transaction processing...</h6>
+    <img src="transactionprocessing.gif">
+    </center>
+    </div>
+</div>
+
+<div id="firstdiv">
+
+    <div id="maintable2">
+
+        <h3>AI-Generated NFT's On The Blockchain</h3>
+
+        <br>
+        
+                <div class="row">
+            <div class="col-sm-3">
+
+                <div id="headimage"></div>
+
+            </div>
+            <div class="col-sm-9"><p><i>NFT Sprites</i> are AI-generated people turned into NFT's (Non-Fungible Tokens), which you can buy and sell on the Ethereum blockchain. <b>None of the people in this game are real</b> -- they are 100% generated by state-of-the-art AI (as of March 2021). By buying one of the NFT's here, you are the <u>sole owner</u> of the NFT until the end of time (as will be shown on the blockchain) unless you sell it or gift it to another person. </p>
+            
+            <p><a href="https://etherscan.io/address/0xb3069fd0077952284d4853a89d2a169fe11740ff#code" target="_blank">The <i>NFT Sprites</i> smart contract</a> is a fully compliant ERC721 NFT contract that allows for a <b>maximum of only 100 NFT's</b> to be minted. The first NFT costs 0.005 Ether to mint, and each new NFT gets a little more expensive. Once you buy an NFT you can either list it for sale at any price or gift it to someone else.</p>
+            
+            <p>As NFT Sprites are ERC721 tokens, they can be traded on marketplaces like OpenSea in addition to this website.</p>
+            
+            <p>This project was built by the same developer as <a href="https://etherrock.com" target="_blank">Ether Rock</a> (launched in 2017).</p>
+            
+            <div id="maininfotext">
+
+            <p><span style="background-color: yellow"><b>How to play</b></span>: you must be connected to the Ethereum mainnet to view info on NFT's, and some Ether (the currency of Ethereum) to buy an NFT. The easiest way to connect to the Ethereum mainnet is to use the <a href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en" target="_blank">MetaMask plugin for Chrome</a> -- go ahead and install it (takes 1 minute), then click the CONNECT TO METAMASK button below. To get Ether you will need to buy some from an exchange like Coinbase.</p>
+            
+        </div>
+
+            </div>
+        </div>
+        
+        <br>
+        
+        <div id="connecttometamaskbutton">
+        <button id="enableEthereumButton" class="btn btn-primary btn-block" onClick="connectmetamask()">CONNECT TO METAMASK</button>
+        </div>
+        
+        <hr>
+        
+        <p><b>Own an NFT? <a href="#" onclick="openNav()">Go to the NFT management console allowing you to sell, hold or transfer your NFT.</a></b></p>
+        
+        <div id="connectbutton"></div>
+
+    </div>
+
+</div>
+
+<div id="particles-js">
+
+    <div id="maintable">
+
+        <h4>Latest Virgin NFT [Never Before Sold]</h4>
+
+        <div id="virginrockinfo"></div>
+
+        <br>
+
+        <center>
+        <div id="mainrocktable">
+
+        </div>
+        </center>
+
+        <br>
+
+        <h4>All Active (USED) NFT's</h4>
+
+        <br>
+
+        <div id="usedrockinfo"><p><b>Once you connect to the Ethereum mainnet</b>, information on all the NFT's Ethereum users have brought would be shown below. Any NFT's that users have listed for sale could also be brought here.</p></div>
+
+        <br>
+        
+    </div>
+
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+<script src="./particles.js"></script>
+<script src="./particlesapp.js"></script>
+
+</body>
+
+</html>
